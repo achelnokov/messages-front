@@ -65,7 +65,7 @@ const changeConditionSelect = (event) => {
         <!-- Поле Название -->
         <div class="mb-4">
           <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Название</label>
-          <input type="text" id="name" name="name" placeholder="Введите название сообщения" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg 
+          <input type="text" id="name" name="name" placeholder="Введите название сообщения" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xs 
                         bg-white dark:bg-neutral-900 text-gray-900 dark:text-white 
                         focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                         focus:outline-none transition-shadow">
@@ -74,7 +74,7 @@ const changeConditionSelect = (event) => {
         <!-- Поле Описание -->
         <div class="mb-4">
           <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Текст</label>
-          <textarea id="description" name="description" rows="3" placeholder="Текст сообщения" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg 
+          <textarea id="description" name="description" rows="3" placeholder="Текст сообщения" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xs 
                            bg-white dark:bg-neutral-900 text-gray-900 dark:text-white 
                            focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                            focus:outline-none transition-shadow resize-none"></textarea>

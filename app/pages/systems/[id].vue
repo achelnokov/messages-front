@@ -1,9 +1,26 @@
 <script setup>
+import { ref } from 'vue'
 const fields = ref([
   { id: 'addressId', name: 'Идентификатор адреса', open: false },
   { id: 'cityId', name: 'Идентификатор города', open: false },
   { id: 'streetId', name: 'Идентификатор улицы', open: false },
 ])
+
+
+const form = ref({
+  apiKey: ''
+})
+
+const generateRandomStr = () => {
+
+        let result           = '';
+        let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let charactersLength = characters.length;
+        for ( let i = 0; i < 35; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        form.value.apiKey = result
+}
 </script>
 
 <template>
@@ -21,7 +38,7 @@ const fields = ref([
         <!-- Поле Название -->
         <div class="mb-4">
           <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Название</label>
-          <input type="text" id="name" name="name" placeholder="Введите название сторонней системы" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg 
+          <input type="text" id="name" name="name" placeholder="Введите название сторонней системы" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xs 
                         bg-white dark:bg-neutral-900 text-gray-900 dark:text-white 
                         focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                         focus:outline-none transition-shadow">
@@ -31,7 +48,7 @@ const fields = ref([
         <div class="mb-4">
           <label for="description"
             class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Описание</label>
-          <textarea id="description" name="description" rows="3" placeholder="Краткое описание" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg 
+          <textarea id="description" name="description" rows="3" placeholder="Краткое описание" class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xs 
                            bg-white dark:bg-neutral-900 text-gray-900 dark:text-white 
                            focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                            focus:outline-none transition-shadow resize-none"></textarea>
@@ -41,12 +58,13 @@ const fields = ref([
         <div class="mb-4">
           <label for="apiKey" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Ключ API</label>
           <div class="relative">
-            <input type="text" id="apiKey" name="apiKey" placeholder="Нажмите на иконку справа для генерации ключа >>>"
-              class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg 
+            <input v-model="form.apiKey" type="text" id="apiKey" name="apiKey" placeholder="Нажмите на иконку справа для генерации ключа >>>"
+              class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xs 
                           bg-white dark:bg-neutral-900 text-gray-900 dark:text-white 
                           focus:ring-2 focus:ring-blue-500 focus:border-blue-500 
                           focus:outline-none transition-shadow pr-10">
             <button
+              @click="generateRandomStr"
               class="absolute  cursor-pointer right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
               <Icon name="solar:pen-bold" size="15" />
             </button>
@@ -77,7 +95,7 @@ const fields = ref([
         <div class="block_params ">
           <!-- Блок 1 -->
           <div v-for="field in fields"
-            class="mb-3 px-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700">
+            class="mb-3 px-4 border border-gray-200 dark:border-gray-700 rounded-xs bg-gray-50 dark:bg-gray-700">
             <div class="cursor-pointer py-2 relative" @click="field.open = !field.open">
               <span>{{ field.name }}</span>
               <Icon name="solar:arrow-down-line-duotone" size="20"
