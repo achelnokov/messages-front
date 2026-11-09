@@ -33,7 +33,7 @@
       <Icon :name="$colorMode.preference == 'white' ? 'solar:moon-bold' : 'solar:sun-bold'" />
     </button>
 
-      <button class="header-btn" @click="changeTheme">
+    <button class="header-btn">
       <Icon name="solar:logout-2-bold-duotone" />
     </button>
   </header>
